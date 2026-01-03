@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany,ManyToOne } from 'typeorm';
 import { Enrollment } from '../enrollments/enrollment.entity';
+import { Department } from '../departments/department.entity';
 
 @Entity()
 export class Course {
@@ -23,6 +24,9 @@ code: string;
 
 @Column()
 credit: number;
+
+@ManyToOne(() => Department, (department) => department.courses)
+department: Department;
 
 @OneToMany(() => Enrollment, (enrollment) => enrollment.course)
 enrollments: Enrollment[];

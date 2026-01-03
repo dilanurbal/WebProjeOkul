@@ -11,9 +11,12 @@ export class CoursesService {
     private courseRepository: Repository<Course>,
   ) {}
 
-  findAll(): Promise<Course[]> {
-    return this.courseRepository.find();
-  }
+
+
+findAll() {
+  return this.courseRepository.find({ relations: ['department'] });
+}
+
 
   create(createCourseDto: CreateCourseDto): Promise<Course> {
     const course = this.courseRepository.create({
