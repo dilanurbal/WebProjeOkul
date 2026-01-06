@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body,Put, Delete, Param } from '@nestjs/common';
 import { DepartmentsService } from './departments.service';
 
 @Controller('departments') // Frontend buradan bağlanacak: /departments
@@ -13,5 +13,15 @@ export class DepartmentsController {
   @Post()
   create(@Body() body: { name: string, maxCredit?: number }) {
     return this.departmentsService.create(body);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() body: { name: string, maxCredit?: number }) {
+    return this.departmentsService.update(+id, body);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.departmentsService.remove(+id);
   }
 }
