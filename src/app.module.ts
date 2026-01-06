@@ -31,7 +31,7 @@ import { DepartmentsModule } from './departments/departments.module'; // 1. Bunu
     AuthModule,
     EnrollmentsModule,
     CoursesModule,
-    DepartmentsModule, // 2. Buraya da ekle
+    DepartmentsModule, 
   ],
 })
 export class AppModule {}
